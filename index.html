@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mira — Your Gentle Diary Companion</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/png" href="7DFD653D-7DAA-482A-9768-398D3885CB78.png">
+</head>
+<body>
+    <!-- Animated Ambient Background -->
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- ============================================
+         INTRO / AUTH SCREEN
+         ============================================ -->
+    <div class="intro-screen" id="introScreen">
+        <div class="intro-container">
+            <div class="intro-logo">
+                <div class="intro-glow"></div>
+                <img src="7DFD653D-7DAA-482A-9768-398D3885CB78.png" alt="Mira logo" class="intro-logo-img">
+            </div>
+            <p class="intro-subtitle">a safe space to breathe, reflect, and grow</p>
+
+            <!-- Sign In Form -->
+            <form class="auth-form" id="signInForm">
+                <h2 class="auth-title">Welcome back</h2>
+                <div class="auth-field">
+                    <label for="signInEmail">Email</label>
+                    <div class="auth-input-wrap">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="signInEmail" placeholder="you@example.com" required autocomplete="email">
+                    </div>
+                </div>
+                <div class="auth-field">
+                    <label for="signInPassword">Password</label>
+                    <div class="auth-input-wrap">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signInPassword" placeholder="Your password" required autocomplete="current-password">
+                    </div>
+                </div>
+                <p class="auth-error" id="signInError"></p>
+                <button type="submit" class="auth-btn">
+                    <span>Sign In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <p class="auth-switch">Don't have an account? <button type="button" class="auth-switch-btn" id="showSignUp">Create one</button></p>
+            </form>
+
+            <!-- Sign Up Form -->
+            <form class="auth-form hidden" id="signUpForm">
+                <h2 class="auth-title">Create your space</h2>
+                <div class="auth-field">
+                    <label for="signUpName">Your name</label>
+                    <div class="auth-input-wrap">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="signUpName" placeholder="What should Mira call you?" required autocomplete="given-name">
+                    </div>
+                </div>
+                <div class="auth-field">
+                    <label for="signUpEmail">Email</label>
+                    <div class="auth-input-wrap">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="signUpEmail" placeholder="you@example.com" required autocomplete="email">
+                    </div>
+                </div>
+                <div class="auth-field">
+                    <label for="signUpPassword">Password</label>
+                    <div class="auth-input-wrap">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signUpPassword" placeholder="At least 6 characters" required minlength="6" autocomplete="new-password">
+                    </div>
+                </div>
+                <p class="auth-error" id="signUpError"></p>
+                <button type="submit" class="auth-btn">
+                    <span>Get Started</span>
+                    <i class="fas fa-heart"></i>
+                </button>
+                <p class="auth-switch">Already have an account? <button type="button" class="auth-switch-btn" id="showSignIn">Sign in</button></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================================
+         MAIN APP (hidden until auth)
+         ============================================ -->
+    <div class="app-wrapper hidden" id="appWrapper">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="logo-section">
+            <div class="logo-glow"></div>
+            <div class="logo-hero-wrap">
+                <img class="logo-hero" src="7DFD653D-7DAA-482A-9768-398D3885CB78.png" alt="Mira logo">
+            </div>
+            <p class="logo-tagline">your gentle diary companion</p>
+        </div>
+
+        <button class="new-entry-btn" id="newEntryBtn">
+            <i class="fas fa-plus"></i>
+            <span>New Entry</span>
+        </button>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section" id="recentEntriesSection">
+                <h3 class="nav-section-title">Conversations</h3>
+                <div class="journal-list" id="journalList"></div>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="nav-item" id="darkModeToggle">
+                <div class="nav-icon-wrap"><i class="fas fa-moon"></i></div>
+                <span>Dark Mode</span>
+            </button>
+            <button class="nav-item" id="settingsBtn">
+                <div class="nav-icon-wrap"><i class="fas fa-cog"></i></div>
+                <span>Settings</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Sidebar Overlay (mobile) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Chat Area -->
+    <main class="main-content">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <button class="menu-btn" id="menuBtn" aria-label="Open sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="top-bar-brand">
+                    <div class="top-bar-logo-wrap">
+                        <img src="7DFD653D-7DAA-482A-9768-398D3885CB78.png" alt="Mira" class="top-bar-logo">
+                        <span class="top-bar-status-dot"></span>
+                    </div>
+                    <div class="top-bar-brand-text">
+                        <span class="top-bar-name">Mira</span>
+                        <span class="top-bar-subtitle">Always listening</span>
+                    </div>
+                </div>
+            </div>
+            <div class="top-bar-center">
+                <div class="top-bar-divider"></div>
+            </div>
+            <div class="top-bar-right">
+                <button class="mood-chip" id="moodBtn" aria-label="Set mood">
+                    <span class="mood-chip-emoji" id="currentMoodEmoji">🌸</span>
+                    <span class="mood-chip-label" id="currentMood">Calm</span>
+                    <i class="fas fa-chevron-down mood-chip-arrow"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mood Picker Dropdown -->
+        <div class="mood-picker" id="moodPicker">
+            <div class="mood-picker-header">
+                <h4 class="mood-picker-title">How are you feeling?</h4>
+                <p class="mood-picker-subtitle">Tag your current mood</p>
+            </div>
+            <div class="mood-options">
+                <button class="mood-option" data-mood="🌸 Calm">🌸<span>Calm</span></button>
+                <button class="mood-option" data-mood="✨ Happy">✨<span>Happy</span></button>
+                <button class="mood-option" data-mood="🌧️ Sad">🌧️<span>Sad</span></button>
+                <button class="mood-option" data-mood="😤 Frustrated">😤<span>Frustrated</span></button>
+                <button class="mood-option" data-mood="🥺 Anxious">🥺<span>Anxious</span></button>
+                <button class="mood-option" data-mood="💪 Strong">💪<span>Strong</span></button>
+                <button class="mood-option" data-mood="🌙 Tired">🌙<span>Tired</span></button>
+                <button class="mood-option" data-mood="🦋 Hopeful">🦋<span>Hopeful</span></button>
+                <button class="mood-option" data-mood="💔 Heartbroken">💔<span>Heartbroken</span></button>
+                <button class="mood-option" data-mood="🌻 Grateful">🌻<span>Grateful</span></button>
+                <button class="mood-option" data-mood="😶 Numb">😶<span>Numb</span></button>
+                <button class="mood-option" data-mood="🔥 Motivated">🔥<span>Motivated</span></button>
+            </div>
+        </div>
+
+        <!-- Chat Messages -->
+        <div class="chat-area" id="chatArea">
+            <!-- Decorative Floral Background -->
+            <div class="chat-florals" aria-hidden="true">
+                <div class="floral floral-1">🌹</div>
+                <div class="floral floral-2">🌸</div>
+                <div class="floral floral-3">🥀</div>
+                <div class="floral floral-4">💮</div>
+                <div class="floral floral-5">🌷</div>
+                <div class="floral floral-6">🌺</div>
+                <div class="floral floral-7">🌸</div>
+                <div class="floral floral-8">🌹</div>
+                <div class="floral floral-vine-left"></div>
+                <div class="floral floral-vine-right"></div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Date Separator -->
+                <div class="date-separator">
+                    <span>Today</span>
+                </div>
+
+                <!-- Welcome message -->
+                <div class="message mira-message fade-in">
+                    <div class="message-avatar">
+                        <img src="7DFD653D-7DAA-482A-9768-398D3885CB78.png" alt="Mira">
+                    </div>
+                    <div class="message-content">
+                        <span class="message-sender">Mira</span>
+                        <div class="message-bubble">
+                            <p>Hey you 🌸</p>
+                            <p>I'm Mira — your space to breathe, think, and just be yourself.</p>
+                            <p>There's no wrong thing to say here. Whatever you're feeling, I'm listening.</p>
+                        </div>
+                        <span class="message-time">Just now</span>
+                    </div>
+                </div>
+
+                <!-- Demo user message -->
+                <div class="message user-message fade-in">
+                    <div class="message-avatar user-avatar">
+                        <span>Y</span>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            <p>I had a really long day and I don't even know why I feel so drained. Nothing bad happened, I just feel... heavy.</p>
+                        </div>
+                        <span class="message-time">11:42 PM</span>
+                    </div>
+                </div>
+
+                <!-- Demo Mira response -->
+                <div class="message mira-message fade-in">
+                    <div class="message-avatar">
+                        <img src="7DFD653D-7DAA-482A-9768-398D3885CB78.png" alt="Mira">
+                    </div>
+                    <div class="message-content">
+                        <span class="message-sender">Mira</span>
+                        <div class="message-bubble">
+                            <p>That makes so much sense. Sometimes your body and mind carry things you don't even notice during the day — and it all catches up when you finally stop.</p>
+                            <p>You don't need a reason to feel tired. You're allowed to just be tired. 💛</p>
+                            <p>Do you want to talk about your day, or would you rather just sit here quietly for a bit?</p>
+                        </div>
+                        <span class="message-time">11:42 PM</span>
+                    </div>
+                </div>
+
+                <!-- Demo user message 2 -->
+                <div class="message user-message fade-in">
+                    <div class="message-avatar user-avatar">
+                        <span>Y</span>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                            <p>I think I just want to talk. I've been holding everything in lately.</p>
+                        </div>
+                        <span class="message-time">11:43 PM</span>
+                    </div>
+                </div>
+
+                <!-- Demo Mira response 2 -->
+                <div class="message mira-message fade-in">
+                    <div class="message-avatar">
+                        <img src="7DFD653D-7DAA-482A-9768-398D3885CB78.png" alt="Mira">
+                    </div>
+                    <div class="message-content">
+                        <span class="message-sender">Mira</span>
+                        <div class="message-bubble">
+                            <p>Then let it out. All of it. I'm not going anywhere. 🌙</p>
+                            <p>Start wherever feels right — there's no order, no rules. Just you and your words.</p>
+                        </div>
+                        <span class="message-time">11:43 PM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Typing Indicator -->
+        <div class="typing-indicator" id="typingIndicator">
+            <div class="message-avatar">
+                <img src="7DFD653D-7DAA-482A-9768-398D3885CB78.png" alt="Mira">
+            </div>
+            <div class="typing-bubble">
+                <span class="typing-label">Mira is thinking</span>
+                <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+            <!-- Attachment Preview Strip -->
+            <div class="attachment-preview" id="attachmentPreview"></div>
+
+            <div class="input-container">
+                <div class="input-left-actions">
+                    <button class="input-action-btn" id="attachBtn" aria-label="Attach image or video" title="Attach image or video">
+                        <i class="fas fa-image"></i>
+                    </button>
+                    <button class="input-action-btn voice-reply-toggle" id="voiceReplyBtn" aria-label="Toggle voice reply" title="Mira replies with voice">
+                        <i class="fas fa-headphones"></i>
+                    </button>
+                </div>
+                <textarea
+                    class="message-input"
+                    id="messageInput"
+                    placeholder="Tell Mira what's on your mind..."
+                    rows="1"
+                ></textarea>
+                <div class="input-actions">
+                    <button class="mic-btn" id="voiceBtn" aria-label="Record voice note" title="Tap to record">
+                        <div class="mic-btn-ring"></div>
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <button class="send-btn" id="sendBtn" aria-label="Send message">
+                        <i class="fas fa-arrow-up"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Voice Recording Bar (Mic 🎤) -->
+            <div class="voice-recording-bar hidden" id="voiceRecordingBar">
+                <div class="voice-rec-left">
+                    <div class="voice-recording-pulse"></div>
+                    <div class="voice-rec-info">
+                        <span class="voice-recording-label">Recording voice note</span>
+                        <span class="voice-recording-timer" id="voiceTimer">0:00</span>
+                    </div>
+                </div>
+                <div class="voice-rec-waveform" id="voiceRecWaveform"></div>
+                <div class="voice-rec-actions">
+                    <button class="voice-cancel-btn" id="voiceCancelBtn" title="Cancel"><i class="fas fa-trash-alt"></i></button>
+                    <button class="voice-send-btn" id="voiceSendBtn" title="Send"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+
+            <!-- Voice Conversation Bar (Headphones 🎧 — Live Call) -->
+            <div class="voice-convo-bar hidden" id="voiceConvoBar">
+                <div class="voice-convo-avatar">
+                    <img src="7DFD653D-7DAA-482A-9768-398D3885CB78.png" alt="Mira">
+                </div>
+                <div class="voice-convo-center">
+                    <span class="voice-convo-label" id="voiceConvoLabel">Connecting...</span>
+                    <span class="voice-convo-timer" id="voiceConvoTimer">0:00</span>
+                    <div class="voice-convo-waves" id="voiceConvoWaves"></div>
+                </div>
+                <div class="voice-convo-actions">
+                    <button class="voice-convo-cancel" id="voiceConvoHangupBtn" title="End call"><i class="fas fa-phone-slash"></i></button>
+                </div>
+            </div>
+
+            <!-- Hidden file input -->
+            <input type="file" id="fileInput" accept="image/*,video/*" multiple hidden>
+
+            <p class="input-hint">Mira is here to reflect you, not judge you. 🌸</p>
+        </div>
+    </main>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <h2>Settings</h2>
+                    <p class="modal-subtitle">Make Mira yours</p>
+                </div>
+                <button class="modal-close" id="settingsClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Account -->
+                <div class="setting-group">
+                    <h3>Account</h3>
+                    <div class="setting-item account-item">
+                        <div class="account-avatar" id="settingsAvatar">U</div>
+                        <div class="setting-item-info">
+                            <span id="settingsUserName">User</span>
+                            <span class="setting-item-desc" id="settingsUserEmail">email</span>
+                        </div>
+                        <button class="sign-out-btn" id="signOutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Sign Out</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Appearance -->
+                <div class="setting-group">
+                    <h3>Appearance</h3>
+                    <div class="setting-item">
+                        <div class="setting-item-info">
+                            <span>Dark Mode</span>
+                            <span class="setting-item-desc">Deep plum & mauve tones</span>
+                        </div>
+                        <label class="toggle">
+                            <input type="checkbox" id="darkModeCheckbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-item-info">
+                            <span>Compact Messages</span>
+                            <span class="setting-item-desc">Tighter spacing between messages</span>
+                        </div>
+                        <label class="toggle">
+                            <input type="checkbox" id="compactCheckbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="setting-group">
+                    <h3>Features</h3>
+                    <div class="setting-item">
+                        <div class="setting-item-info">
+                            <span><i class="fas fa-microphone feature-icon"></i> Voice Messages</span>
+                            <span class="setting-item-desc">Record and send voice notes to Mira</span>
+                        </div>
+                        <span class="feature-badge active">Active</span>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-item-info">
+                            <span><i class="fas fa-image feature-icon"></i> Image & Video Upload</span>
+                            <span class="setting-item-desc">Share photos and videos in your diary</span>
+                        </div>
+                        <span class="feature-badge active">Active</span>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-item-info">
+                            <span><i class="fas fa-brain feature-icon"></i> Smart Intent Detection</span>
+                            <span class="setting-item-desc">Mira adapts her tone to your needs</span>
+                        </div>
+                        <span class="feature-badge active">Active</span>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-item-info">
+                            <span><i class="fas fa-heart feature-icon"></i> Mood Tracking</span>
+                            <span class="setting-item-desc">Tag and track how you're feeling</span>
+                        </div>
+                        <label class="toggle">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Data & Privacy -->
+                <div class="setting-group">
+                    <h3>Data & Privacy</h3>
+                    <div class="setting-item">
+                        <div class="setting-item-info">
+                            <span>Export Conversations</span>
+                            <span class="setting-item-desc">Download all your chats as JSON</span>
+                        </div>
+                        <button class="setting-action-btn" id="exportDataBtn">
+                            <i class="fas fa-download"></i>
+                            <span>Export</span>
+                        </button>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-item-info">
+                            <span>Clear All Data</span>
+                            <span class="setting-item-desc danger-text">Delete all conversations and settings</span>
+                        </div>
+                        <button class="setting-action-btn danger" id="clearDataBtn">
+                            <i class="fas fa-trash-alt"></i>
+                            <span>Clear</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Version -->
+                <div class="settings-footer">
+                    <img src="7DFD653D-7DAA-482A-9768-398D3885CB78.png" alt="Mira" class="settings-footer-logo">
+                    <span>Mira v2.0 — made with 💗</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div> <!-- /app-wrapper -->
+
+    <script src="script.js"></script>
+</body>
+</html>
