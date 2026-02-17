@@ -1,0 +1,10 @@
+{
+  "name": "mira-proxy",
+  "version": "1.0.0",
+  "description": "Proxy so your PC becomes Mira's server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "tunnel": "npx localtunnel --port 3000"
+  }
+}
