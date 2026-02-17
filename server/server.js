@@ -4,7 +4,7 @@
 const http = require('http');
 
 const OLLAMA_PORT = 11434;
-const PROXY_PORT = 3000;
+const PROXY_PORT = 3001;
 
 function addCors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
