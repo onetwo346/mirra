@@ -168,8 +168,18 @@
     font-style: italic;
     color: var(--text-secondary);
     letter-spacing: 0.3px;
-    margin-bottom: 32px;
+    margin-bottom: 10px;
     text-align: center;
+}
+
+.intro-description {
+    font-family: var(--font-primary);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 28px;
+    opacity: 0.8;
+    line-height: 1.5;
 }
 
 /* Auth Forms */
