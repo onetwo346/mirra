@@ -1,4 +1,5 @@
-/* Mira API config
-   Local: leave as localhost:11434
-   Remote: run server + tunnel (see SERVER.md), then set to your tunnel URL (e.g. https://xyz.loca.lt) */
+/* Mira API config — https://onetwo346.github.io/mirra/
+   Local: MIRA_API_BASE = localhost
+   Same WiFi (phone): set MIRA_API_REMOTE to your PC's IP (ipconfig) + :3000 */
 window.MIRA_API_BASE = 'http://localhost:11434';
+window.MIRA_API_REMOTE = 'http://192.168.1.181:3000'; // your PC — works when phone is on same WiFi

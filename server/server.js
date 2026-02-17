@@ -61,6 +61,6 @@ const server = http.createServer((req, res) => {
 
 server.listen(PROXY_PORT, () => {
   console.log(`\n  Mira proxy running on http://localhost:${PROXY_PORT}`);
-  console.log(`  Expose with: npx localtunnel --port ${PROXY_PORT}`);
+  console.log(`  Expose with: npx cloudflared tunnel --url http://localhost:${PROXY_PORT}`);
   console.log(`  Then set MIRA_API_BASE in api-config.js to your tunnel URL.\n`);
 });

@@ -20,7 +20,7 @@ npm start
 
 The proxy runs on port 3000 and forwards to Ollama. Keep this terminal open.
 
-## 3. Expose your PC with a tunnel (free)
+## 3. Expose your PC with Cloudflare Tunnel (free, works on phones)
 
 Open a **second terminal** and run:
 
@@ -29,16 +29,16 @@ cd server
 npm run tunnel
 ```
 
-Or: `npx localtunnel --port 3000`
+Or: `npx cloudflared tunnel --url http://localhost:3000`
 
-You'll get a URL like `https://something-random.loca.lt`. **Copy it.**
+You'll get a URL like `https://abc-xyz.trycloudflare.com`. **Copy it.** This works for API calls (unlike localtunnel, which breaks on phones).
 
 ## 4. Point Mira at your tunnel
 
 Edit `api-config.js` in the project root and set:
 
 ```js
-window.MIRA_API_BASE = 'https://your-tunnel-url.loca.lt';
+window.MIRA_API_BASE = 'https://abc-xyz.trycloudflare.com';
 ```
 
 Use the URL from step 3 (no trailing slash).
@@ -60,6 +60,4 @@ As long as:
 
 ---
 
-**Notes:**
-- localtunnel gives a new URL each time. After restarting, update `api-config.js` and redeploy.
-- For a stable URL, use [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/) (free, persistent subdomain): `cloudflared tunnel --url http://localhost:3000`
+**Note:** Cloudflare gives a new URL each time you run the tunnel. After restarting, copy the new URL, update `api-config.js`, and push to GitHub.

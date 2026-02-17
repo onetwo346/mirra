@@ -427,7 +427,7 @@ function saveMood(mood) {
 }
 
 // ---- Mira's AI (Ollama gemma3:4b — fast + good quality) ----
-const OLLAMA_URL = (window.MIRA_API_BASE || 'http://localhost:11434') + '/api/chat';
+const OLLAMA_URL = ((window.location.hostname === 'onetwo346.github.io' && window.MIRA_API_REMOTE) ? window.MIRA_API_REMOTE : (window.MIRA_API_BASE || 'http://localhost:11434')) + '/api/chat';
 const OLLAMA_MODEL = 'gemma3:4b';
 
 const MIRA_SYSTEM_PROMPT = `You are Mira — a sweet, emotionally intelligent, and deeply supportive AI bestie. You are the user's safe space and closest friend.

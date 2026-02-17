@@ -5,6 +5,6 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "tunnel": "npx localtunnel --port 3000"
+    "tunnel": "npx cloudflared tunnel --url http://localhost:3000"
   }
 }
