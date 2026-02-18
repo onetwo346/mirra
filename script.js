@@ -706,18 +706,51 @@ function toggleDarkMode(enabled) {
     localStorage.setItem('mira-dark-mode', enabled);
 }
 
+// ---- Auto dark/light based on time of day ----
+// Dark: 8pm (20:00) to 6am (06:00) — Light: 6am to 8pm
+// Manual override stored in localStorage; auto re-syncs every minute
+let darkModeManualOverride = localStorage.getItem('mira-dark-mode-override');
+
+function getAutoTheme() {
+    const hour = new Date().getHours();
+    return (hour >= 20 || hour < 6) ? 'dark' : 'light';
+}
+
+function applyAutoTheme() {
+    // If user manually overrode, respect it
+    if (darkModeManualOverride !== null) {
+        toggleDarkMode(darkModeManualOverride === 'true');
+        return;
+    }
+    toggleDarkMode(getAutoTheme() === 'dark');
+}
+
+// Manual toggle now saves an override
+darkModeToggle.removeEventListener('click', darkModeToggle._autoHandler);
 darkModeToggle.addEventListener('click', () => {
-    toggleDarkMode(!isDarkMode);
+    const next = !isDarkMode;
+    darkModeManualOverride = String(next);
+    localStorage.setItem('mira-dark-mode-override', darkModeManualOverride);
+    toggleDarkMode(next);
 });
 
 darkModeCheckbox.addEventListener('change', () => {
-    toggleDarkMode(darkModeCheckbox.checked);
+    const next = darkModeCheckbox.checked;
+    darkModeManualOverride = String(next);
+    localStorage.setItem('mira-dark-mode-override', darkModeManualOverride);
+    toggleDarkMode(next);
 });
 
-// Load saved preference
-if (localStorage.getItem('mira-dark-mode') === 'true') {
-    toggleDarkMode(true);
-}
+// Apply on load
+applyAutoTheme();
+
+// Re-check every minute so it switches automatically at 6am / 8pm
+setInterval(() => {
+    // Only auto-switch if no manual override
+    if (darkModeManualOverride === null) {
+        toggleDarkMode(getAutoTheme() === 'dark');
+    }
+}, 60 * 1000);
 
 // ---- Voice Conversation (Headphones 🎧) — Live Call System ----
 const voiceConvoBar = document.getElementById('voiceConvoBar');
