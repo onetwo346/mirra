@@ -291,12 +291,13 @@ function formatDate(isoStr) {
 }
 
 function saveCurrentConvo() {
-    if (!activeConvoId || chatHistory.length === 0) return;
+    if (!activeConvoId) return;
+    localStorage.setItem('mira-active-convo', activeConvoId);
     const convo = getActiveConvo();
     if (convo) {
         convo.messages = chatHistory;
         convo.updatedAt = new Date().toISOString();
-        convo.preview = getPreview(chatHistory);
+        if (chatHistory.length > 0) convo.preview = getPreview(chatHistory);
     }
     saveConversations(conversations);
 }
@@ -1741,53 +1742,54 @@ document.addEventListener('keydown', (e) => {
 
 // ---- Restore saved state on load ----
 function restoreSavedState() {
+    // Always re-read from localStorage to get freshest data
+    conversations = loadConversations();
+    activeConvoId = localStorage.getItem('mira-active-convo') || null;
+
     // Restore mood
     const savedMood = localStorage.getItem('mira-mood');
     if (savedMood) {
         setMoodDisplay(savedMood);
     }
 
-    // Restore active conversation or start fresh
+    // Restore active conversation or fall back to most recent
     if (activeConvoId && getActiveConvo()) {
         chatHistory = getActiveConvo().messages;
-        if (chatHistory.length > 0) {
-            chatMessages.innerHTML = '';
-            const separator = document.createElement('div');
-            separator.className = 'date-separator';
-            separator.innerHTML = '<span>Today</span>';
-            chatMessages.appendChild(separator);
-
-            chatHistory.forEach(msg => {
-                if (msg.sender === 'user') {
-                    if (msg.voice) {
-                        renderVoiceMessage(msg.voice, msg.voiceDuration, msg.time);
-                    } else {
-                        addUserMessage(msg.text, msg.time, true, msg.attachments || []);
-                    }
-                } else {
-                    if (msg.ttsVoice) {
-                        renderMiraTtsMessage(msg.ttsText, msg.time);
-                    } else {
-                        renderMiraMessage(msg.text, msg.time, true);
-                    }
-                }
-            });
-        }
+        renderChat();
     } else if (conversations.length > 0) {
-        // No active set, load most recent
         activeConvoId = conversations[0].id;
         localStorage.setItem('mira-active-convo', activeConvoId);
         chatHistory = conversations[0].messages;
         renderChat();
     } else {
-        // First time — create initial conversation
         createNewConvo();
+        renderChat();
     }
 
     renderSidebarList();
+    scrollToBottom();
 }
 
 restoreSavedState();
+
+// ---- Re-sync state when tab becomes visible again ----
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+        const savedConvos = loadConversations();
+        const savedActiveId = localStorage.getItem('mira-active-convo');
+        // Only re-render if something actually changed in storage
+        const storedStr = JSON.stringify(savedConvos);
+        const memStr = JSON.stringify(conversations);
+        if (storedStr !== memStr || savedActiveId !== activeConvoId) {
+            conversations = savedConvos;
+            activeConvoId = savedActiveId;
+            const convo = getActiveConvo();
+            chatHistory = convo ? convo.messages : [];
+            renderChat();
+            renderSidebarList();
+        }
+    }
+});
 
 // ---- Initial scroll to bottom ----
 scrollToBottom();
