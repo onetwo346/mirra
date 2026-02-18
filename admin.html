@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mira Admin — Control Center</title>
+    <link rel="icon" type="image/png" href="7DFD653D-7DAA-482A-9768-398D3885CB78.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --pink: #ff4d8d;
+            --pink-soft: #ff85b3;
+            --purple: #a855f7;
+            --purple-soft: #c084fc;
+            --bg: #0f0a1a;
+            --card: #1a1028;
+            --card2: #221535;
+            --border: rgba(168,85,247,0.18);
+            --text: #f0e6ff;
+            --text-muted: #9d7fc4;
+            --green: #22d3a0;
+            --red: #ff4d6d;
+            --yellow: #fbbf24;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Ambient background */
+        .ambient {
+            position: fixed; inset: 0; pointer-events: none; z-index: 0;
+        }
+        .ambient::before {
+            content: '';
+            position: absolute;
+            top: -200px; left: -200px;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%);
+            animation: drift1 12s ease-in-out infinite;
+        }
+        .ambient::after {
+            content: '';
+            position: absolute;
+            bottom: -200px; right: -200px;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(255,77,141,0.1) 0%, transparent 70%);
+            animation: drift2 15s ease-in-out infinite;
+        }
+        @keyframes drift1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(60px,40px)} }
+        @keyframes drift2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-40px,-60px)} }
+
+        /* Layout */
+        .wrapper { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+
+        /* Header */
+        .header {
+            display: flex; align-items: center; gap: 16px;
+            margin-bottom: 36px;
+        }
+        .header-logo {
+            width: 52px; height: 52px; border-radius: 16px;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 24px rgba(255,77,141,0.4);
+        }
+        .header-logo img { width: 40px; height: 40px; object-fit: contain; border-radius: 10px; }
+        .header-text h1 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.6rem; font-weight: 800;
+            background: linear-gradient(135deg, var(--pink-soft), var(--purple-soft));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .header-text p { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+        .header-time {
+            margin-left: auto;
+            text-align: right;
+            font-size: 0.78rem; color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .header-time span { display: block; font-size: 1.1rem; font-weight: 600; color: var(--text); }
+
+        /* Grid */
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 24px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 24px; }
+
+        /* Cards */
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(168,85,247,0.15); }
+        .card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, var(--pink), var(--purple));
+            opacity: 0.6;
+        }
+
+        /* Stat cards */
+        .stat-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; margin-bottom: 14px;
+        }
+        .stat-icon.pink { background: rgba(255,77,141,0.15); color: var(--pink); }
+        .stat-icon.purple { background: rgba(168,85,247,0.15); color: var(--purple); }
+        .stat-icon.green { background: rgba(34,211,160,0.15); color: var(--green); }
+        .stat-icon.yellow { background: rgba(251,191,36,0.15); color: var(--yellow); }
+        .stat-value {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2.4rem; font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(135deg, var(--text), var(--text-muted));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 6px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Status card */
+        .status-row {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .status-row:last-child { border-bottom: none; padding-bottom: 0; }
+        .status-row:first-child { padding-top: 0; }
+        .status-name { font-size: 0.88rem; font-weight: 500; display: flex; align-items: center; gap: 10px; }
+        .status-name i { width: 16px; color: var(--text-muted); }
+        .status-badge {
+            font-size: 0.72rem; font-weight: 700; padding: 4px 10px;
+            border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;
+            display: flex; align-items: center; gap: 5px;
+        }
+        .status-badge.online { background: rgba(34,211,160,0.15); color: var(--green); }
+        .status-badge.offline { background: rgba(255,77,109,0.15); color: var(--red); }
+        .status-badge.checking { background: rgba(251,191,36,0.12); color: var(--yellow); }
+        .status-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+        .status-dot.pulse { animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+        /* Tunnel URL */
+        .tunnel-url {
+            font-size: 0.72rem; color: var(--purple-soft);
+            word-break: break-all; margin-top: 6px;
+            background: rgba(168,85,247,0.08); padding: 8px 12px;
+            border-radius: 8px; border: 1px solid var(--border);
+            font-family: monospace;
+        }
+
+        /* Users table */
+        .card-title {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem; font-weight: 700; margin-bottom: 18px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .card-title i { color: var(--pink); }
+        .users-table { width: 100%; border-collapse: collapse; }
+        .users-table th {
+            text-align: left; font-size: 0.7rem; font-weight: 600;
+            color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;
+            padding: 0 0 10px 0; border-bottom: 1px solid var(--border);
+        }
+        .users-table td {
+            padding: 10px 0; font-size: 0.82rem;
+            border-bottom: 1px solid rgba(168,85,247,0.08);
+            vertical-align: middle;
+        }
+        .users-table tr:last-child td { border-bottom: none; }
+        .user-avatar {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; font-weight: 700; color: white;
+            margin-right: 8px; vertical-align: middle;
+        }
+        .empty-state { text-align: center; color: var(--text-muted); font-size: 0.82rem; padding: 24px 0; }
+
+        /* Log */
+        .log-box {
+            background: var(--card2); border-radius: 12px;
+            padding: 14px; max-height: 180px; overflow-y: auto;
+            font-family: monospace; font-size: 0.75rem;
+            line-height: 1.7; color: var(--text-muted);
+            border: 1px solid var(--border);
+        }
+        .log-box .log-line { display: block; }
+        .log-box .log-line.ok { color: var(--green); }
+        .log-box .log-line.err { color: var(--red); }
+        .log-box .log-line.info { color: var(--purple-soft); }
+
+        /* Refresh indicator */
+        .refresh-bar {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.72rem; color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .refresh-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    </style>
+</head>
+<body>
+<div class="ambient"></div>
+<div class="wrapper">
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-logo">
+            <img src="7DFD653D-7DAA-482A-9768-398D3885CB78.png" alt="Mira">
+        </div>
+        <div class="header-text">
+            <h1>Mira Admin</h1>
+            <p>Control Center — Cosmos Coderrs Technologies</p>
+        </div>
+        <div class="header-time">
+            <span id="clockTime">--:--:--</span>
+            <span id="clockDate">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Refresh indicator -->
+    <div class="refresh-bar">
+        <div class="refresh-dot"></div>
+        Live — refreshing every 10 seconds &nbsp;|&nbsp; Last updated: <span id="lastUpdated">—</span>
+    </div>
+
+    <!-- Stat cards -->
+    <div class="grid">
+        <div class="card">
+            <div class="stat-icon pink"><i class="fas fa-users"></i></div>
+            <div class="stat-value" id="statUsers">0</div>
+            <div class="stat-label">Total Signups</div>
+        </div>
+        <div class="card">
+            <div class="stat-icon purple"><i class="fas fa-comments"></i></div>
+            <div class="stat-value" id="statConvos">0</div>
+            <div class="stat-label">Conversations</div>
+        </div>
+        <div class="card">
+            <div class="stat-icon green"><i class="fas fa-bolt"></i></div>
+            <div class="stat-value" id="statMessages">0</div>
+            <div class="stat-label">Total Messages</div>
+        </div>
+    </div>
+
+    <div class="grid-2">
+        <!-- System Status -->
+        <div class="card">
+            <div class="card-title"><i class="fas fa-server"></i> System Status</div>
+            <div class="status-row">
+                <div class="status-name"><i class="fas fa-brain"></i> Ollama AI</div>
+                <div class="status-badge checking" id="ollamaStatus">
+                    <div class="status-dot pulse"></div> Checking
+                </div>
+            </div>
+            <div class="status-row">
+                <div class="status-name"><i class="fas fa-cloud"></i> Cloudflare Tunnel</div>
+                <div class="status-badge checking" id="tunnelStatus">
+                    <div class="status-dot pulse"></div> Checking
+                </div>
+            </div>
+            <div class="status-row">
+                <div class="status-name"><i class="fab fa-github"></i> GitHub Pages</div>
+                <div class="status-badge checking" id="githubStatus">
+                    <div class="status-dot pulse"></div> Checking
+                </div>
+            </div>
+            <div class="status-row">
+                <div class="status-name"><i class="fas fa-microchip"></i> AI Model</div>
+                <div class="status-badge online" id="modelStatus">
+                    <div class="status-dot"></div> <span id="modelName">gemma3:4b</span>
+                </div>
+            </div>
+            <div id="tunnelUrlBox" class="tunnel-url" style="display:none"></div>
+        </div>
+
+        <!-- Activity Log -->
+        <div class="card">
+            <div class="card-title"><i class="fas fa-terminal"></i> Activity Log</div>
+            <div class="log-box" id="logBox">
+                <span class="log-line info">[boot] Mira Admin Dashboard started</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Users Table -->
+    <div class="card">
+        <div class="card-title"><i class="fas fa-user-friends"></i> Registered Users <span style="font-size:0.75rem;color:var(--text-muted);font-weight:400;margin-left:6px" id="userCountLabel"></span></div>
+        <table class="users-table">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Email</th>
+                    <th>Conversations</th>
+                    <th>Messages</th>
+                </tr>
+            </thead>
+            <tbody id="usersTableBody">
+                <tr><td colspan="4" class="empty-state">Loading users...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script>
+    // ---- Clock ----
+    function updateClock() {
+        const now = new Date();
+        document.getElementById('clockTime').textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        document.getElementById('clockDate').textContent = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // ---- Log helper ----
+    const logBox = document.getElementById('logBox');
+    function log(msg, type = 'info') {
+        const line = document.createElement('span');
+        line.className = `log-line ${type}`;
+        const time = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        line.textContent = `[${time}] ${msg}`;
+        logBox.appendChild(line);
+        logBox.scrollTop = logBox.scrollHeight;
+    }
+
+    // ---- Read Mira's localStorage data ----
+    // Since admin.html is opened as a local file from the same machine,
+    // it shares the same origin as the GitHub Pages site only if opened via the same domain.
+    // We read from the api-config.js tunnel URL to check status,
+    // and we read local data from the mirra folder directly via the tunnel log file.
+
+    function readMiraLocalStorage() {
+        // Try to read from localStorage (works if opened from same origin)
+        try {
+            const users = JSON.parse(localStorage.getItem('mira-users') || '{}');
+            const convos = JSON.parse(localStorage.getItem('mira-conversations') || '[]');
+            return { users, convos };
+        } catch(e) {
+            return { users: {}, convos: [] };
+        }
+    }
+
+    // ---- Read tunnel URL from api-config.js ----
+    async function getTunnelUrl() {
+        try {
+            const res = await fetch('api-config.js?t=' + Date.now());
+            const text = await res.text();
+            const match = text.match(/https:\/\/[a-z0-9\-]+\.trycloudflare\.com/);
+            return match ? match[0] : null;
+        } catch(e) {
+            return null;
+        }
+    }
+
+    // ---- Check Ollama status ----
+    async function checkOllama() {
+        try {
+            const res = await fetch('http://localhost:11434/api/tags', { signal: AbortSignal.timeout(3000) });
+            if (res.ok) {
+                const data = await res.json();
+                const models = data.models?.map(m => m.name) || [];
+                return { ok: true, models };
+            }
+            return { ok: false };
+        } catch(e) {
+            return { ok: false };
+        }
+    }
+
+    // ---- Check tunnel status ----
+    async function checkTunnel(url) {
+        if (!url) return false;
+        try {
+            const res = await fetch(url + '/api/tags', { signal: AbortSignal.timeout(5000) });
+            return res.ok;
+        } catch(e) {
+            return false;
+        }
+    }
+
+    // ---- Check GitHub Pages ----
+    async function checkGithub() {
+        try {
+            const res = await fetch('https://onetwo346.github.io/mirra/', { signal: AbortSignal.timeout(5000), mode: 'no-cors' });
+            return true;
+        } catch(e) {
+            return false;
+        }
+    }
+
+    // ---- Set status badge ----
+    function setStatus(id, online, label) {
+        const el = document.getElementById(id);
+        el.className = `status-badge ${online ? 'online' : 'offline'}`;
+        el.innerHTML = `<div class="status-dot${online ? ' pulse' : ''}"></div> ${label || (online ? 'Online' : 'Offline')}`;
+    }
+
+    // ---- Render users table ----
+    function renderUsers(users, convos) {
+        const tbody = document.getElementById('usersTableBody');
+        const emails = Object.keys(users);
+
+        document.getElementById('statUsers').textContent = emails.length;
+        document.getElementById('userCountLabel').textContent = `(${emails.length} total)`;
+
+        // Count convos and messages per user
+        let totalConvos = convos.length;
+        let totalMessages = 0;
+        convos.forEach(c => { totalMessages += (c.messages || []).length; });
+
+        document.getElementById('statConvos').textContent = totalConvos;
+        document.getElementById('statMessages').textContent = totalMessages;
+
+        if (emails.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="4" class="empty-state">No users signed up yet 💕</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = emails.map(email => {
+            const user = users[email];
+            const initials = user.name ? user.name.slice(0,2).toUpperCase() : email.slice(0,2).toUpperCase();
+            // Count convos for this user (all convos are per-device so we show totals)
+            return `
+                <tr>
+                    <td><span class="user-avatar">${initials}</span>${user.name || '—'}</td>
+                    <td style="color:var(--text-muted)">${email}</td>
+                    <td>${totalConvos}</td>
+                    <td>${totalMessages}</td>
+                </tr>
+            `;
+        }).join('');
+    }
+
+    // ---- Main refresh ----
+    async function refresh() {
+        document.getElementById('lastUpdated').textContent = new Date().toLocaleTimeString();
+
+        // Read local data
+        const { users, convos } = readMiraLocalStorage();
+        renderUsers(users, convos);
+
+        // Check Ollama
+        const ollama = await checkOllama();
+        setStatus('ollamaStatus', ollama.ok, ollama.ok ? 'Online' : 'Offline');
+        if (ollama.ok) {
+            const gemma = ollama.models.find(m => m.includes('gemma3'));
+            if (gemma) document.getElementById('modelName').textContent = gemma;
+            log(`Ollama OK — models: ${ollama.models.slice(0,3).join(', ')}`, 'ok');
+        } else {
+            log('Ollama not responding', 'err');
+        }
+
+        // Get tunnel URL
+        const tunnelUrl = await getTunnelUrl();
+        if (tunnelUrl) {
+            const tunnelBox = document.getElementById('tunnelUrlBox');
+            tunnelBox.style.display = 'block';
+            tunnelBox.textContent = '🌐 ' + tunnelUrl;
+
+            const tunnelOk = await checkTunnel(tunnelUrl);
+            setStatus('tunnelStatus', tunnelOk, tunnelOk ? 'Active' : 'Down');
+            log(`Tunnel ${tunnelOk ? 'active' : 'down'}: ${tunnelUrl}`, tunnelOk ? 'ok' : 'err');
+        } else {
+            setStatus('tunnelStatus', false, 'No URL');
+            log('Could not read tunnel URL from api-config.js', 'err');
+        }
+
+        // Check GitHub Pages
+        const ghOk = await checkGithub();
+        setStatus('githubStatus', ghOk, ghOk ? 'Live' : 'Unreachable');
+        log(`GitHub Pages: ${ghOk ? 'live' : 'unreachable'}`, ghOk ? 'ok' : 'err');
+    }
+
+    // Run on load and every 10 seconds
+    refresh();
+    setInterval(refresh, 10000);
+</script>
+</body>
+</html>
