@@ -548,6 +548,14 @@ async function getMiraResponse(userText) {
 }
 
 async function getMiraResponseStreaming(userText, onChunk, onDone) {
+    // On mobile, if the tab is hidden use non-streaming so background throttling doesn't kill the response
+    if (document.hidden) {
+        const result = await getMiraResponse(userText);
+        if (onChunk) onChunk(result);
+        if (onDone) onDone(result);
+        return result;
+    }
+
     try {
         const messages = buildOllamaMessages(userText);
 
@@ -578,6 +586,21 @@ async function getMiraResponseStreaming(userText, onChunk, onDone) {
         let fullText = '';
 
         while (true) {
+            // If tab goes hidden mid-stream, cancel streaming and keep what we have
+            if (document.hidden) {
+                reader.cancel();
+                const partial = fullText.trim();
+                if (partial) {
+                    if (onDone) onDone(partial);
+                    return partial;
+                }
+                // Nothing received yet — fall back to non-streaming
+                const result = await getMiraResponse(userText);
+                if (onChunk) onChunk(result);
+                if (onDone) onDone(result);
+                return result;
+            }
+
             const { done, value } = await reader.read();
             if (done) break;
 

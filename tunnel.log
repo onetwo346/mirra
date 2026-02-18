@@ -32,3 +32,5 @@ ad07 protocol=quic
 2026-02-18T03:42:38Z ERR Request failed error="stream 17 canceled by remote with error code 0" connIndex=0 dest=https://agency-ind-claims-monitored.trycloudflare.com/api/chat event=0 ip=198.41.200.43 type=http
 2026-02-18T04:57:37Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=0 event=1 ingressRule=0 originService=http://localhost:11434
 2026-02-18T04:57:37Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=0 dest=https://agency-ind-claims-monitored.trycloudflare.com/api/chat event=0 ip=198.41.200.43 type=http
+2026-02-18T05:04:15Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=0 event=1 ingressRule=0 originService=http://localhost:11434
+2026-02-18T05:04:15Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=0 dest=https://agency-ind-claims-monitored.trycloudflare.com/api/chat event=0 ip=198.41.200.43 type=http
