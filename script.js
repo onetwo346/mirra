@@ -526,8 +526,8 @@ async function getMiraResponse(userText) {
                     temperature: 0.8,
                     top_p: 0.9,
                     top_k: 50,
-                    num_predict: 120,
-                    num_ctx: 1024,
+                    num_predict: 600,
+                    num_ctx: 2048,
                     repeat_penalty: 1.2
                 }
             })
@@ -561,8 +561,8 @@ async function getMiraResponseStreaming(userText, onChunk, onDone) {
                     temperature: 0.8,
                     top_p: 0.9,
                     top_k: 50,
-                    num_predict: 120,
-                    num_ctx: 1024,
+                    num_predict: 600,
+                    num_ctx: 2048,
                     repeat_penalty: 1.2
                 }
             })
