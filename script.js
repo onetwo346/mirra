@@ -1336,11 +1336,18 @@ function renderMiraMessage(text, time, skipSave) {
     }
 }
 
+let isResponding = false;
+
 async function sendMessage() {
+    if (isResponding) return;
     const text = messageInput.value.trim();
     const attachments = [...pendingAttachments];
 
     if (!text && attachments.length === 0) return;
+
+    isResponding = true;
+    sendBtn.disabled = true;
+    messageInput.disabled = true;
 
     addUserMessage(text, null, false, attachments);
     messageInput.value = '';
@@ -1355,6 +1362,11 @@ async function sendMessage() {
     } else {
         await addMiraAIMessage(text);
     }
+
+    isResponding = false;
+    sendBtn.disabled = false;
+    messageInput.disabled = false;
+    messageInput.focus();
 }
 
 function scrollToBottom() {
