@@ -143,21 +143,6 @@ function enterApp(user, isNewUser) {
     const avatarEl = document.getElementById('settingsAvatar');
     if (avatarEl) avatarEl.textContent = initial;
 
-    // Personalized welcome for new users — replace the static demo messages
-    if (isNewUser) {
-        const chatMessages = document.getElementById('chatMessages');
-        chatMessages.innerHTML = '';
-        const separator = document.createElement('div');
-        separator.className = 'date-separator';
-        separator.innerHTML = '<span>Today</span>';
-        chatMessages.appendChild(separator);
-
-        // Will be rendered after app is visible via Ollama
-        setTimeout(() => {
-            addMiraAIMessage(`This is my very first time opening the app. My name is ${user.name}. Introduce yourself as Mira and welcome me warmly. Keep it short and sweet.`);
-        }, 600);
-    }
-
     // Fade out intro, show app
     introScreen.classList.add('fade-out');
     appWrapper.classList.remove('hidden');
@@ -165,6 +150,24 @@ function enterApp(user, isNewUser) {
     setTimeout(() => {
         introScreen.style.display = 'none';
     }, 500);
+
+    if (isNewUser) {
+        // New user — clear chat and trigger welcome message
+        const chatMessages = document.getElementById('chatMessages');
+        chatMessages.innerHTML = '';
+        const separator = document.createElement('div');
+        separator.className = 'date-separator';
+        separator.innerHTML = '<span>Today</span>';
+        chatMessages.appendChild(separator);
+        stateRestored = true; // skip restoreSavedState at bottom
+        setTimeout(() => {
+            addMiraAIMessage(`This is my very first time opening the app. My name is ${user.name}. Introduce yourself as Mira and welcome me warmly. Keep it short and sweet.`);
+        }, 600);
+    } else {
+        // Returning user — restore all chats and sidebar immediately
+        restoreSavedState();
+        stateRestored = true;
+    }
 }
 
 // Check for existing session on load
@@ -218,6 +221,7 @@ const darkModeCheckbox = document.getElementById('darkModeCheckbox');
 // ---- State ----
 let isDarkMode = false;
 let voiceReplyMode = false;
+let stateRestored = false;
 
 // Multi-conversation storage
 // Structure: { conversations: [ { id, createdAt, updatedAt, preview, messages: [{sender,text,time}] } ], activeId: string|null }
@@ -1826,7 +1830,7 @@ function restoreSavedState() {
     scrollToBottom();
 }
 
-restoreSavedState();
+if (!stateRestored) restoreSavedState();
 
 // ---- Re-sync state when tab becomes visible again ----
 document.addEventListener('visibilitychange', () => {
