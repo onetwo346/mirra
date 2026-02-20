@@ -24,3 +24,435 @@
 2026-02-20T13:34:24Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=0 dest=https://algebra-soc-laser-printed.trycloudflare.com/api/chat event=0 ip=198.41.200.113 type=http
 2026-02-20T13:40:27Z ERR  error="Incoming request ended abruptly: context canceled" connIndex=0 event=1 ingressRule=0 originService=http://localhost:11434
 2026-02-20T13:40:28Z ERR Request failed error="Incoming request ended abruptly: context canceled" connIndex=0 dest=https://algebra-soc-laser-printed.trycloudflare.com/api/chat event=0 ip=198.41.200.113 type=http
+2026-02-20T14:13:12Z ERR failed to run the datagram handler error="write udp [::]:53793->198.41.200.113:7844: wsasendto: A socket operation was attempted to an unreachable network." connIndex=0 event=0 ip=198.41.200.113
+2026-02-20T14:13:12Z ERR failed to accept incoming stream requests error="failed to accept QUIC stream: write udp [::]:53793->198.41.200.113:7844: wsasendto: A socket operation was attempted to an unreachable network." connIndex=0 event=0 ip=198.41.200.113
+2026-02-20T14:13:12Z ERR failed to serve tunnel connection error="datagram manager encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.113
+2026-02-20T14:13:12Z ERR Serve tunnel error error="datagram manager encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.113
+2026-02-20T14:13:12Z INF Retrying connection in up to 1s connIndex=0 event=0 ip=198.41.200.113
+2026-02-20T14:13:12Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.113
+2026-02-20T14:13:12Z ERR Failed to dial a quic connection error="failed to dial to edge with quic: write udp [::]:53793->198.41.200.113:7844: wsasendto: A socket operation was attempted to an unreachable network." connIndex=0 event=0 ip=198.41.200.113
+2026-02-20T14:13:12Z INF Retrying connection in up to 4s connIndex=0 event=0 ip=198.41.200.113
+2026-02-20T14:33:53Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.233
+2026-02-20T14:33:53Z ERR Failed to refresh DNS local resolver error="lookup region1.v2.argotunnel.com: i/o timeout"
+2026-02-20T14:33:58Z ERR Failed to dial a quic connection error="failed to dial to edge with quic: timeout: no recent network activity" connIndex=0 event=0 ip=198.41.200.233
+2026-02-20T14:33:58Z INF Retrying connection in up to 8s connIndex=0 event=0 ip=198.41.200.233
+2026-02-20T14:34:03Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:04Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:04Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:04Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:04Z INF Retrying connection in up to 16s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:10Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:10Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:10Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:10Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:10Z INF Retrying connection in up to 32s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:34Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:34Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:34Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:34Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:34Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:40Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:40Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:40Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:40Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:34:40Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:11Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:11Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:11Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:11Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:11Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:24Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:24Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:24Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:24Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:24Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:24Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:24Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:24Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:24Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:24Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:31Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:31Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:31Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:31Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:31Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:58Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:58Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:58Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:58Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:35:58Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:01Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:01Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:01Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:01Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:01Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:05Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:05Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:05Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:05Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:05Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:26Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:26Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:26Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:26Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:26Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:40Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:40Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:40Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:40Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:40Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:48Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:48Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:48Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:48Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:36:48Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:37:13Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:37:13Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:37:13Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:37:13Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:37:13Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:37:29Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:37:29Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:37:29Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:37:29Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:37:29Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:37:49Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:37:49Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:37:49Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:37:49Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:37:49Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:38:18Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:38:18Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:38:18Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:38:18Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:38:18Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:38:30Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:38:31Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:38:31Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:38:31Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:38:31Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:38:52Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:38:52Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:38:52Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:38:52Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:38:52Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:39:24Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:39:24Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:39:24Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:39:24Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:39:24Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:39:47Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:39:47Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:39:47Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:39:47Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:39:47Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:39:50Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:39:50Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:39:50Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:39:50Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:39:50Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:40:11Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:40:11Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:40:11Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:40:11Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:40:11Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:40:16Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:40:17Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:40:17Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:40:17Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:40:17Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:40:44Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:40:44Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:40:44Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:40:44Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:40:44Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:40:59Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:41:00Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:41:00Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:41:00Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:41:00Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:41:29Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:41:29Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:41:29Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:41:29Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:41:29Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:41:37Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:41:37Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:41:37Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:41:37Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:41:37Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:42:02Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:42:02Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:42:02Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:42:02Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:42:02Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:42:24Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:42:25Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:42:25Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:42:25Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:42:25Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:42:50Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:42:50Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:42:50Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:42:50Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:42:50Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:08Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:09Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:09Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:09Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:09Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:26Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:28Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:28Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:28Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:28Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:28Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:29Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:29Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:29Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:29Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:29Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:30Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:30Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:30Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:30Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:53Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:53Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:53Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:53Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:43:53Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:21Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:21Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:21Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:21Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:21Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:40Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:41Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:41Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:41Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:41Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:52Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:52Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:52Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:52Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:52Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:54Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:55Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:55Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:55Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:44:55Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:21Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:22Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:22Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:22Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:22Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:41Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:41Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:41Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:41Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:41Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:46Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:47Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:47Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:47Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:47Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:54Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:56Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:56Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:56Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:45:56Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:46:20Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:46:20Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:46:20Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:46:20Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:46:20Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:46:23Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:46:24Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:46:24Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:46:24Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:46:24Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:46:51Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:46:51Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:46:51Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:46:51Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:46:51Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:06Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:06Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:06Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:06Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:06Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:06Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:06Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:06Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:06Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:06Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:30Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:30Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:30Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:30Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:30Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:54Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:55Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:55Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:55Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:47:55Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:23Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:23Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:23Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:23Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:23Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:35Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:35Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:35Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:35Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:35Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:37Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:38Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:38Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:38Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:38Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:57Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:57Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:57Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:57Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:48:57Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:49:08Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:49:09Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:49:09Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:49:09Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:49:09Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:49:38Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:49:38Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:49:38Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:49:38Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:49:38Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:49:56Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:49:57Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:49:57Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:49:57Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:49:57Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:06Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:06Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:06Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:06Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:06Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:12Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:12Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:12Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:12Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:12Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:19Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:20Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:20Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:20Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:20Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:31Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:32Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:32Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:32Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:32Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:47Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:48Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:48Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:48Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:50:48Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:51:09Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:51:09Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:51:09Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:51:09Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:51:09Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:51:29Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:51:30Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:51:30Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:51:30Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:51:30Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:51:46Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:51:46Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:51:46Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:51:46Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:51:46Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:52:14Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:52:14Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:52:14Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:52:14Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:52:14Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:52:46Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:52:46Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:52:46Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:52:46Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:52:46Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:12Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:12Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:12Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:12Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:12Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:21Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:21Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:21Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:21Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:21Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:46Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:47Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:47Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:47Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:47Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:57Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:57Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:57Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:57Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:53:57Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:54:18Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:54:18Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:54:18Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:54:18Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:54:18Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:54:26Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:54:27Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:54:27Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:54:27Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:54:27Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:54:33Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:54:33Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:54:33Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:54:33Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:54:33Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:55:03Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:55:03Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:55:03Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:55:03Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:55:03Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:55:30Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:55:30Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:55:30Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:55:30Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:55:30Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:55:51Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:55:52Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:55:52Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:55:52Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:55:52Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:01Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:02Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:02Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:02Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:02Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:33Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:33Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:33Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:33Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:33Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:36Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:36Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:36Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:36Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:36Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:38Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:39Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:39Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:39Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:39Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:59Z INF Tunnel connection curve preferences: [X25519MLKEM768 CurveP256] connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:59Z ERR failed to run the datagram handler error="context canceled" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:59Z ERR failed to serve tunnel connection error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:59Z ERR Serve tunnel error error="control stream encountered a failure while serving" connIndex=0 event=0 ip=198.41.200.193
+2026-02-20T14:56:59Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.200.193

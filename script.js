@@ -5,6 +5,12 @@
 
 let inactivityTimer = null;
 const INACTIVITY_DELAY = 1000 * 60 * 60 * 4; // 4 hours
+let stateRestored = false;
+
+// Load conversations early so they're available as soon as enterApp runs
+let conversations = JSON.parse(localStorage.getItem('mira-conversations') || '[]');
+let activeConvoId = localStorage.getItem('mira-active-convo') || null;
+let chatHistory = [];
 
 function resetInactivityTimer() {
     if (inactivityTimer) clearTimeout(inactivityTimer);
@@ -159,14 +165,10 @@ function enterApp(user, isNewUser) {
         separator.className = 'date-separator';
         separator.innerHTML = '<span>Today</span>';
         chatMessages.appendChild(separator);
-        stateRestored = true; // skip restoreSavedState at bottom
+        stateRestored = true;
         setTimeout(() => {
             addMiraAIMessage(`This is my very first time opening the app. My name is ${user.name}. Introduce yourself as Mira and welcome me warmly. Keep it short and sweet.`);
         }, 600);
-    } else {
-        // Returning user — restore all chats and sidebar immediately
-        restoreSavedState();
-        stateRestored = true;
     }
 }
 
@@ -174,6 +176,32 @@ function enterApp(user, isNewUser) {
 const existingUser = getCurrentUser();
 if (existingUser) {
     enterApp(existingUser);
+    // conversations already loaded at top — populate sidebar immediately for returning users
+    if (!stateRestored) {
+        const _jl = document.getElementById('journalList');
+        if (_jl) {
+            _jl.innerHTML = '';
+            conversations.forEach(convo => {
+                const item = document.createElement('button');
+                item.className = 'journal-item' + (convo.id === activeConvoId ? ' active' : '');
+                item.dataset.id = convo.id;
+                item.innerHTML = `<div class="journal-item-info">
+                    <span class="journal-item-title">${(convo.preview || 'New conversation').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</span>
+                    <span class="journal-item-date">${convo.updatedAt ? new Date(convo.updatedAt).toLocaleDateString('en-US',{month:'short',day:'numeric'}) : ''}</span>
+                </div>
+                <button class="journal-item-delete" data-delete-id="${convo.id}" aria-label="Delete conversation"><i class="fas fa-trash-alt"></i></button>`;
+                item.addEventListener('click', (e) => {
+                    if (e.target.closest('.journal-item-delete')) return;
+                    switchToConvo(convo.id);
+                });
+                item.querySelector('.journal-item-delete').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    deleteConvo(convo.id);
+                });
+                _jl.appendChild(item);
+            });
+        }
+    }
 }
 
 // ============================================
@@ -221,7 +249,6 @@ const darkModeCheckbox = document.getElementById('darkModeCheckbox');
 // ---- State ----
 let isDarkMode = false;
 let voiceReplyMode = false;
-let stateRestored = false;
 
 // Multi-conversation storage
 // Structure: { conversations: [ { id, createdAt, updatedAt, preview, messages: [{sender,text,time}] } ], activeId: string|null }
@@ -232,10 +259,6 @@ function loadConversations() {
 function saveConversations(convos) {
     localStorage.setItem('mira-conversations', JSON.stringify(convos));
 }
-
-let conversations = loadConversations();
-let activeConvoId = localStorage.getItem('mira-active-convo') || null;
-let chatHistory = [];
 
 // Migrate old single-chat format to multi-conversation
 (function migrateOldData() {
@@ -1805,6 +1828,7 @@ function restoreSavedState() {
     // Always re-read from localStorage to get freshest data
     conversations = loadConversations();
     activeConvoId = localStorage.getItem('mira-active-convo') || null;
+    console.log('[Mira] restoreSavedState: conversations=', conversations.length, 'activeConvoId=', activeConvoId);
 
     // Restore mood
     const savedMood = localStorage.getItem('mira-mood');
