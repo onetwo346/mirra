@@ -7,9 +7,16 @@ let inactivityTimer = null;
 const INACTIVITY_DELAY = 1000 * 60 * 60 * 4; // 4 hours
 let stateRestored = false;
 
+// Per-user storage keys — conversations are private per account
+function getUserEmail() {
+    try { return JSON.parse(localStorage.getItem('mira-session') || '{}').email || 'guest'; } catch(e) { return 'guest'; }
+}
+function convoKey() { return 'mira-conversations-' + getUserEmail(); }
+function activeKey() { return 'mira-active-convo-' + getUserEmail(); }
+
 // Load conversations early so they're available as soon as enterApp runs
-let conversations = JSON.parse(localStorage.getItem('mira-conversations') || '[]');
-let activeConvoId = localStorage.getItem('mira-active-convo') || null;
+let conversations = JSON.parse(localStorage.getItem(convoKey()) || '[]');
+let activeConvoId = localStorage.getItem(activeKey()) || null;
 let chatHistory = [];
 
 function resetInactivityTimer() {
@@ -253,11 +260,11 @@ let voiceReplyMode = false;
 // Multi-conversation storage
 // Structure: { conversations: [ { id, createdAt, updatedAt, preview, messages: [{sender,text,time}] } ], activeId: string|null }
 function loadConversations() {
-    return JSON.parse(localStorage.getItem('mira-conversations') || '[]');
+    return JSON.parse(localStorage.getItem(convoKey()) || '[]');
 }
 
 function saveConversations(convos) {
-    localStorage.setItem('mira-conversations', JSON.stringify(convos));
+    localStorage.setItem(convoKey(), JSON.stringify(convos));
 }
 
 // Migrate old single-chat format to multi-conversation
@@ -277,7 +284,7 @@ function saveConversations(convos) {
             convo.preview = oldMessages.find(m => m.sender === 'user')?.text.slice(0, 60) || 'Imported conversation';
             conversations.unshift(convo);
             activeConvoId = id;
-            localStorage.setItem('mira-active-convo', id);
+            localStorage.setItem(activeKey(), id);
             saveConversations(conversations);
         }
         localStorage.removeItem('mira-chat-history');
@@ -319,7 +326,7 @@ function formatDate(isoStr) {
 
 function saveCurrentConvo() {
     if (!activeConvoId) return;
-    localStorage.setItem('mira-active-convo', activeConvoId);
+    localStorage.setItem(activeKey(), activeConvoId);
     const convo = getActiveConvo();
     if (convo) {
         convo.messages = chatHistory;
@@ -341,7 +348,7 @@ function createNewConvo() {
     conversations.unshift(convo);
     activeConvoId = id;
     chatHistory = convo.messages;
-    localStorage.setItem('mira-active-convo', id);
+    localStorage.setItem(activeKey(), id);
     saveConversations(conversations);
     return convo;
 }
@@ -351,7 +358,7 @@ function switchToConvo(id) {
     saveCurrentConvo();
 
     activeConvoId = id;
-    localStorage.setItem('mira-active-convo', id);
+    localStorage.setItem(activeKey(), id);
     const convo = getActiveConvo();
     chatHistory = convo ? convo.messages : [];
 
@@ -1822,8 +1829,8 @@ exportDataBtn.addEventListener('click', () => {
 
 clearDataBtn.addEventListener('click', () => {
     if (confirm('Are you sure? This will delete all your conversations and cannot be undone.')) {
-        localStorage.removeItem('mira-conversations');
-        localStorage.removeItem('mira-active-convo');
+        localStorage.removeItem(convoKey());
+        localStorage.removeItem(activeKey());
         localStorage.removeItem('mira-mood');
         conversations = [];
         activeConvoId = null;
@@ -1847,7 +1854,7 @@ document.addEventListener('keydown', (e) => {
 function restoreSavedState() {
     // Always re-read from localStorage to get freshest data
     conversations = loadConversations();
-    activeConvoId = localStorage.getItem('mira-active-convo') || null;
+    activeConvoId = localStorage.getItem(activeKey()) || null;
     console.log('[Mira] restoreSavedState: conversations=', conversations.length, 'activeConvoId=', activeConvoId);
 
     // Restore mood
@@ -1862,7 +1869,7 @@ function restoreSavedState() {
         renderChat();
     } else if (conversations.length > 0) {
         activeConvoId = conversations[0].id;
-        localStorage.setItem('mira-active-convo', activeConvoId);
+        localStorage.setItem(activeKey(), activeConvoId);
         chatHistory = conversations[0].messages;
         renderChat();
     } else {
@@ -1880,7 +1887,7 @@ if (!stateRestored) restoreSavedState();
 document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') {
         const savedConvos = loadConversations();
-        const savedActiveId = localStorage.getItem('mira-active-convo');
+        const savedActiveId = localStorage.getItem(activeKey());
         // Only re-render if something actually changed in storage
         const storedStr = JSON.stringify(savedConvos);
         const memStr = JSON.stringify(conversations);
