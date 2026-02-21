@@ -1847,7 +1847,6 @@ function restoreSavedState() {
     // Always re-read from localStorage to get freshest data
     conversations = loadConversations();
     activeConvoId = localStorage.getItem('mira-active-convo') || null;
-    console.log('[Mira] restoreSavedState: conversations=', conversations.length, 'activeConvoId=', activeConvoId);
 
     // Restore mood
     const savedMood = localStorage.getItem('mira-mood');
