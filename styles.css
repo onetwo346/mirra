@@ -917,6 +917,7 @@ textarea {
     display: flex;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
 }
 
 .top-bar-logo-wrap {
@@ -1331,18 +1332,18 @@ textarea {
 
 /* Avatars */
 .message-avatar {
-    width: 30px;
-    height: 30px;
+    width: 42px;
+    height: 42px;
     border-radius: var(--radius-full);
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-lavender));
+    background: linear-gradient(135deg, #f9a8d4, #c084fc, #e879f9, #f472b6);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     margin-top: 22px;
     overflow: hidden;
-    padding: 2px;
-    box-shadow: 0 2px 10px var(--accent-glow);
+    padding: 2.5px;
+    box-shadow: 0 2px 14px rgba(232, 121, 249, 0.35);
     transition: transform var(--transition-fast);
 }
 
@@ -1353,7 +1354,8 @@ textarea {
 .message-avatar img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: var(--radius-full);
 }
 
 .user-avatar {
@@ -2109,6 +2111,191 @@ textarea {
     max-height: 90vh;
     border-radius: var(--radius-md);
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* ============================================
+   MIRA PROFILE MODAL
+   ============================================ */
+.mira-profile-modal {
+    padding: 0;
+    overflow: hidden;
+    max-width: 360px;
+    text-align: center;
+}
+
+.mira-profile-hero {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, #f9a8d4, #c084fc, #e879f9, #f472b6);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0;
+}
+
+.mira-profile-avatar-wrap {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f9a8d4, #c084fc, #e879f9, #f472b6);
+    padding: 3px;
+    position: absolute;
+    bottom: -46px;
+    box-shadow: 0 8px 30px rgba(232, 121, 249, 0.4);
+}
+
+.mira-profile-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--bg-modal);
+}
+
+.mira-profile-status-dot {
+    position: absolute;
+    bottom: -36px;
+    right: calc(50% - 42px);
+    width: 14px;
+    height: 14px;
+    background: #4ade80;
+    border-radius: 50%;
+    border: 2px solid var(--bg-modal);
+}
+
+.mira-profile-info {
+    padding: 60px 28px 28px;
+}
+
+.mira-profile-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 4px;
+}
+
+.mira-profile-handle {
+    font-size: 0.85rem;
+    color: var(--accent-primary);
+    margin: 0 0 14px;
+    font-weight: 500;
+}
+
+.mira-profile-bio {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0 0 16px;
+}
+
+.mira-profile-tags {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.mira-tag {
+    background: linear-gradient(135deg, rgba(249,168,212,0.2), rgba(192,132,252,0.2));
+    border: 1px solid rgba(232,121,249,0.3);
+    color: var(--accent-primary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.mira-profile-features {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.mira-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(249,168,212,0.07);
+    border: 1px solid rgba(232,121,249,0.15);
+    border-radius: 14px;
+    padding: 12px 14px;
+    transition: background var(--transition-fast);
+}
+
+.mira-feature-item:hover {
+    background: rgba(249,168,212,0.14);
+}
+
+.mira-feature-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(249,168,212,0.2), rgba(192,132,252,0.2));
+    border-radius: 10px;
+}
+
+.mira-feature-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mira-feature-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.mira-feature-desc {
+    font-size: 0.76rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.mira-profile-cta {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #e879f9, #f472b6);
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+    box-shadow: 0 4px 16px rgba(232,121,249,0.35);
+}
+
+.mira-profile-cta:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.mira-profile-modal .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 10;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    backdrop-filter: blur(8px);
 }
 
 /* ============================================

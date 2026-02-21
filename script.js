@@ -1110,7 +1110,7 @@ function miraVoiceReply(text) {
     messageDiv.className = 'message mira-message';
     messageDiv.innerHTML = `
         <div class="message-avatar">
-            <img src="7DFD653D-7DAA-482A-9768-398D3885CB78.png" alt="Mira">
+            <img src="3B65818D-6451-46C6-90AD-D8F5A2797F26.png" alt="Mira">
         </div>
         <div class="message-content">
             <span class="message-sender">Mira</span>
@@ -1169,7 +1169,7 @@ function renderMiraTtsMessage(ttsText, time) {
     messageDiv.className = 'message mira-message';
     messageDiv.innerHTML = `
         <div class="message-avatar">
-            <img src="7DFD653D-7DAA-482A-9768-398D3885CB78.png" alt="Mira">
+            <img src="3B65818D-6451-46C6-90AD-D8F5A2797F26.png" alt="Mira">
         </div>
         <div class="message-content">
             <span class="message-sender">Mira</span>
@@ -1239,6 +1239,25 @@ if (window.speechSynthesis) {
         window.speechSynthesis.getVoices();
     };
 }
+
+// ---- Mira Profile Modal ----
+const miraProfileModal = document.getElementById('miraProfileModal');
+const miraProfileClose = document.getElementById('miraProfileClose');
+const topBarBrand = document.querySelector('.top-bar-brand');
+
+function openMiraProfile() {
+    miraProfileModal.classList.add('active');
+}
+
+if (topBarBrand) topBarBrand.addEventListener('click', openMiraProfile);
+miraProfileClose.addEventListener('click', () => miraProfileModal.classList.remove('active'));
+miraProfileModal.addEventListener('click', (e) => {
+    if (e.target === miraProfileModal) miraProfileModal.classList.remove('active');
+});
+document.getElementById('miraProfileCta').addEventListener('click', () => {
+    miraProfileModal.classList.remove('active');
+    messageInput.focus();
+});
 
 // ---- Settings Modal ----
 settingsBtn.addEventListener('click', () => {
@@ -1343,7 +1362,7 @@ async function addMiraAIMessage(userText) {
     messageDiv.className = 'message mira-message';
     messageDiv.innerHTML = `
         <div class="message-avatar">
-            <img src="7DFD653D-7DAA-482A-9768-398D3885CB78.png" alt="Mira">
+            <img src="3B65818D-6451-46C6-90AD-D8F5A2797F26.png" alt="Mira">
         </div>
         <div class="message-content">
             <span class="message-sender">Mira</span>
@@ -1400,7 +1419,7 @@ function renderMiraMessage(text, time, skipSave) {
 
     messageDiv.innerHTML = `
         <div class="message-avatar">
-            <img src="7DFD653D-7DAA-482A-9768-398D3885CB78.png" alt="Mira">
+            <img src="3B65818D-6451-46C6-90AD-D8F5A2797F26.png" alt="Mira">
         </div>
         <div class="message-content">
             <span class="message-sender">Mira</span>
