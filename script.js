@@ -455,7 +455,8 @@ function saveMood(mood) {
 }
 
 // ---- Mira's AI (Ollama gemma3:4b — fast + good quality) ----
-const OLLAMA_URL = ((window.location.hostname === 'onetwo346.github.io' && window.MIRA_API_REMOTE) ? window.MIRA_API_REMOTE : (window.MIRA_API_BASE || 'http://localhost:11434')) + '/api/chat';
+const _isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+const OLLAMA_URL = (_isLocal ? (window.MIRA_API_BASE || 'http://localhost:11434') : (window.MIRA_API_REMOTE || 'http://localhost:11434')) + '/api/chat';
 const OLLAMA_MODEL = 'gemma3:4b';
 
 const MIRA_SYSTEM_PROMPT = `You are Mira — a sweet, emotionally intelligent, deeply supportive AI bestie AND a brilliant study companion. You are the user's safe space, closest friend, and smartest helper.
@@ -1847,6 +1848,7 @@ function restoreSavedState() {
     // Always re-read from localStorage to get freshest data
     conversations = loadConversations();
     activeConvoId = localStorage.getItem('mira-active-convo') || null;
+    console.log('[Mira] restoreSavedState: conversations=', conversations.length, 'activeConvoId=', activeConvoId);
 
     // Restore mood
     const savedMood = localStorage.getItem('mira-mood');
