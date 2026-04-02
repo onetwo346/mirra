@@ -2,7 +2,8 @@
    Local: MIRA_API_BASE = localhost:11434 (Ollama direct)
    Universal: MIRA_API_REMOTE = Cloudflare tunnel URL (works on ANY device, anywhere) */
 window.MIRA_API_BASE = 'http://localhost:11434';
-window.MIRA_API_REMOTE = 'https://calculations-upgrading-same-correspondence.trycloudflare.com'; // Cloudflare tunnel — works everywhere
+window.MIRA_API_REMOTE = 'https://logo-constraints-boat-glenn.trycloudflare.com'; // Cloudflare tunnel — works everywhere
+
 
 
 
